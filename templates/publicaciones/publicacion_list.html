@@ -1,19 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Listado de Publicaciones</h2>
-    
-    <ul>
-        {% for pub in publicacion_list %}
-            <li>
-                <strong>{{ pub.titulo }}</strong> 
-                (por {{ pub.autor }} el {{ pub.fecha_publicacion }})
-                <br>
-                <a href="{% url 'publicaciones:detalle_publicacion' pub.id %}">Ver detalle completo</a>
-            </li>
-            <br>
-        {% empty %}
-            <p>Aún no hay publicaciones en el sitio.</p>
-        {% endfor %}
-    </ul>
+<h2 class="mb-4">Listado de Publicaciones</h2>
+
+<div class="row g-3">
+{% for pub in publicacion_list %}
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ pub.titulo }}</h5>
+                <p class="card-text text-muted small">
+                    por <strong>{{ pub.autor }}</strong> &mdash; {{ pub.fecha_publicacion }}
+                </p>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'publicaciones:detalle_publicacion' pub.id %}" class="btn btn-sm btn-outline-dark">
+                    Ver detalle completo
+                </a>
+            </div>
+        </div>
+    </div>
+{% empty %}
+    <p class="text-muted">Aún no hay publicaciones en el sitio.</p>
+{% endfor %}
+</div>
 {% endblock %}

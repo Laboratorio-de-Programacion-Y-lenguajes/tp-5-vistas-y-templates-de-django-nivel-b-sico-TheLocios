@@ -2,22 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ titulo|default:"Portal de Publicaciones" }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <h1>Portal de la Facu</h1>
-        <nav>
-            <a href="{% url 'publicaciones:inicio' %}">Inicio</a> |
-            <a href="{% url 'publicaciones:lista_publicaciones' %}">Publicaciones</a>
-        </nav>
-    </header>
+<body class="bg-light">
 
-    <hr>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'publicaciones:inicio' %}">Portal de la Facu</a>
+            <div>
+                <a href="{% url 'publicaciones:inicio' %}" class="btn btn-outline-light btn-sm me-2">Inicio</a>
+                <a href="{% url 'publicaciones:lista_publicaciones' %}" class="btn btn-outline-light btn-sm">Publicaciones</a>
+            </div>
+        </div>
+    </nav>
 
-    <main>
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>
+
+    <footer class="text-center text-muted py-4 mt-5">
+        <small>Portal de la Facu &mdash; Django 2026</small>
+    </footer>
+
 </body>
 </html>
