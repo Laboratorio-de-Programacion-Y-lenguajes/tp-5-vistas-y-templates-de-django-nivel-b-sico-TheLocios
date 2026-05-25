@@ -1,19 +1,9 @@
-<!-- 
-    TODO: Completar el template de la página de inicio.
+{% extends "base.html" %}
 
-    Requisitos:
-    - Extender base.html con {% extends "base.html" %}
-    - Sobreescribir {% block content %} ... {% endblock %}
-    - Dentro del bloque mostrar:
-        - El valor de la variable {{ titulo }} en un encabezado (<h1>)
-        - El valor de la variable {{ mensaje }} en un párrafo (<p>)
-        - Un link hacia la lista de publicaciones usando {% url %}
+{% block content %}
+    <h2>{{ titulo }}</h2>
+    <p>{{ mensaje }}</p>
 
-    Pista para extender:
-        {% extends "base.html" %}
-
-        {% block content %}
-            <h1>{{ titulo }}</h1>
-            ...
-        {% endblock %}
--->
+    <br>
+    <a href="{% url 'publicaciones:lista_publicaciones' %}">Ver todas las publicaciones</a>
+{% endblock %}
