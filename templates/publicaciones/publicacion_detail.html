@@ -1,16 +1,16 @@
-<!-- 
-    TODO: Completar el template de detalle de publicación.
+{% extends "base.html" %}
 
-    Requisitos:
-    - Extender base.html
-    - Sobreescribir {% block content %}
-    - Dentro del bloque mostrar:
-        - Título: {{ publicacion.titulo }}
-        - Autor: {{ publicacion.autor }}
-        - Fecha de publicación: {{ publicacion.fecha_publicacion }}
-        - Contenido completo: {{ publicacion.contenido }}
-        - Un link para volver al listado usando {% url 'publicaciones:lista_publicaciones' %}
-
-    Pista para el link de vuelta:
-        <a href="{% url 'publicaciones:lista_publicaciones' %}">← Volver al listado</a>
--->
+{% block content %}
+    <h2>{{ publicacion.titulo }}</h2>
+    <p><strong>Autor:</strong> {{ publicacion.autor }}</p>
+    <p><strong>Fecha de publicación:</strong> {{ publicacion.fecha_publicacion }}</p>
+    
+    <hr>
+    
+    <div>
+        <p>{{ publicacion.contenido }}</p>
+    </div>
+    
+    <br>
+    <a href="{% url 'publicaciones:lista_publicaciones' %}">Volver al listado</a>
+{% endblock %}
